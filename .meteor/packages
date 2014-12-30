@@ -59,13 +59,13 @@ telescope-i18n
 # Telescope Packages (Optional)
 
 telescope-datetimepicker
-telescope-theme-base
+# telescope-theme-base
 telescope-module-share
 telescope-api
 telescope-rss
 telescope-search
 telescope-tags
-telescope-theme-hubble
+# telescope-theme-hubble
 telescope-email
 telescope-embedly
 telescope-newsletter
@@ -78,3 +78,8 @@ telescope-invites
 telescope-post-by-feed
 
 # Custom Packages
+telescope-theme-weld
+mystor:device-detection
+archive:jquery-dotdotdot
+multiply:iron-router-progress
+fastclick
