@@ -54,7 +54,8 @@ postSchemaObject = {
     editable: true,
     autoform: {
       editable: true,
-      rows: 5
+      rows: 5,
+      instructions: '**bold**   *italic*   ![](http://link/to/image.jpg)'
     }
   },
   htmlBody: {
