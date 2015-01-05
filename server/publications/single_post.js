@@ -23,6 +23,7 @@ Meteor.publish('postUsers', function(postId) {
       users = _.unique(users);
     }
 
+    users = users.concat(post.upvoters); // publish list of upvoters by ID
     return Meteor.users.find({_id: {$in: users}}, {fields: privacyOptions});
   }
   return [];
