@@ -29,10 +29,10 @@ Meteor.publish('postsListUsers', function(terms) {
 
     // for each post, add first four commenter's userIds to userIds array
     posts.forEach(function (post) {
-      userIds = userIds.concat(_.first(post.commenters,4));
+      userIds = userIds.concat(post.upvoters); // #WELD - changed to publish upvoters instead of commenters
     });
 
-    userIds = _.unique(userIds);
+    userIds = _.without(userIds, this.userId);
 
     return Meteor.users.find({_id: {$in: userIds}}, {fields: avatarOptions, multi: true});
   }
