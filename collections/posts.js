@@ -32,7 +32,6 @@ postSchemaObject = {
   },
   url: {
     type: String,
-    label: "URL",
     optional: true,
     autoform: {
       editable: true,
@@ -42,7 +41,6 @@ postSchemaObject = {
   title: {
     type: String,
     optional: false,
-    label: "Title",
     editable: true,
     autoform: {
       editable: true
@@ -294,7 +292,6 @@ Posts.before.insert(function (userId, doc) {
 Posts.before.update(function (userId, doc, fieldNames, modifier, options) {
   // if body is being modified, update htmlBody too
   if (Meteor.isServer && modifier.$set && modifier.$set.body) {
-    modifier.$set = modifier.$set || {};
     modifier.$set.htmlBody = sanitize(marked(modifier.$set.body));
   }
 });
