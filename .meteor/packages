@@ -85,7 +85,7 @@ telescope-releases
 telescope-getting-started
 telescope-subscribe-to-posts
 
-# Custom Packages
+# Custom Packages for WELD
 telescope-theme-weld
 mystor:device-detection
 archive:jquery-dotdotdot
