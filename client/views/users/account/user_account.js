@@ -84,7 +84,7 @@ Template[getTemplate('userAccount')].events({
         flashMessage(i18n.t('profile_updated'), 'success');
       }
       Deps.afterFlush(function() {
-        var element = $('.grid > .error');
+        var element = $('main.content-wrap');
         $('html, body').animate({scrollTop: element.offset().top});
       });
     });
