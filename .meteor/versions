@@ -27,6 +27,7 @@ chuangbo:cookie@1.1.0
 chuangbo:marked@0.3.5
 cmather:handlebars-server@2.0.0
 coffeescript@1.0.5
+cwohlman:pickadate@1.0.0
 ddp@1.0.14
 deps@1.0.6
 djedi:sanitize-html@1.6.1
@@ -83,6 +84,7 @@ mongo@1.0.11
 mongo-livedata@1.0.7
 mrt:cookies@0.3.0
 mrt:jquery-hotkeys@0.0.1
+mrt:jquery-ui@1.9.2
 mrt:moment@2.8.1
 multiply:iron-router-progress@1.0.1
 mystor:device-detection@0.2.0
@@ -101,6 +103,7 @@ reactive-var@1.0.4
 reload@1.1.2
 retry@1.0.2
 routepolicy@1.0.4
+rzymek:fullcalendar@2.2.6_2
 sacha:juice@0.1.2
 sacha:spin@2.0.4
 service-configuration@1.0.3
