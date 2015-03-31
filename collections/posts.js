@@ -324,7 +324,7 @@ submitPost = function (post) {
 
   // ------------------------------ Properties ------------------------------ //
 
-  defaultProperties = {
+  var defaultProperties = {
     createdAt: new Date(),
     author: getDisplayNameById(userId),
     upvotes: 0,
@@ -454,7 +454,7 @@ Meteor.methods({
     return submitPost(post);
   },
 
-  editPost: function (post, modifier, postId) {
+  editPost: function (modifier, postId) {
 
     var user = Meteor.user(),
         hasAdminRights = isAdmin(user);
@@ -493,10 +493,10 @@ Meteor.methods({
 
     // ------------------------------ Callbacks ------------------------------ //
 
-    // run all post submit server callbacks on modifier object successively
-    modifier = postAfterEditMethodCallbacks.reduce(function(result, currentFunction) {
-        return currentFunction(result);
-    }, modifier);
+    // run all post after edit method callbacks successively
+    postAfterEditMethodCallbacks.forEach(function(currentFunction) {
+      currentFunction(modifier, postId);
+    });
 
     // ------------------------------ After Update ------------------------------ //
 
@@ -558,7 +558,7 @@ Meteor.methods({
       Posts.update(postId, { $inc: { viewCount: 1 }});
     }
   },
-  
+
   deletePostById: function(postId) {
     // remove post comments
     // if(!this.isSimulation) {
