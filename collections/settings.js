@@ -286,6 +286,13 @@ settingsSchemaObject = {
       group: 'integrations'
     }
   },
+  goSquaredId: {
+    type: String,
+    optional: true,
+    autoform: {
+      group: 'integrations'
+    }
+  },
   footerCode: {
     type: String,
     optional: true,

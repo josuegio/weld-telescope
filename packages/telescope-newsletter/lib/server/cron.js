@@ -25,6 +25,11 @@ var getSchedule = function (parser) {
       // sched = {schedules: [{dw: [2,5]}]};
       schedule = recur.on(2,5).dayOfWeek();
 
+    // WELD: Added Saturdays to newsletter schedule, also see newsletter.js
+    case 4: // Once a week (Mondays)
+      // sched = {schedules: [{dw: [6]}]};
+      schedule = recur.on(7).dayOfWeek();
+
     case 7: // Once a week (Mondays)
       // sched = {schedules: [{dw: [2]}]};
       schedule = recur.on(2).dayOfWeek();
