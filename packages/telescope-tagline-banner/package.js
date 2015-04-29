@@ -13,7 +13,6 @@ Package.onUse(function (api) {
   api.use([
     'telescope-base',             // basic Telescope hooks and objects
     'telescope-lib',              // useful functions
-    'telescope-settings',
     'fourseven:scss',             // SCSS compilation package
     'tap:i18n'
   ]);

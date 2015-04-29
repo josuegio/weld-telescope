@@ -26,7 +26,7 @@ var mediaProperty = {
 addToPostSchema.push(mediaProperty);
 
 postThumbnail.push({
-  template: 'postThumbnail',
+  template: 'postThumbnail', 
   order: 15
 });
 
@@ -41,7 +41,7 @@ var embedlyKeyProperty = {
     }
   }
 }
-Settings.addToSchema(embedlyKeyProperty);
+addToSettingsSchema.push(embedlyKeyProperty);
 
 var thumbnailWidthProperty = {
   propertyName: 'thumbnailWidth',
@@ -53,7 +53,7 @@ var thumbnailWidthProperty = {
     }
   }
 }
-Settings.addToSchema(thumbnailWidthProperty);
+addToSettingsSchema.push(thumbnailWidthProperty);
 
 var thumbnailHeightProperty = {
   propertyName: 'thumbnailHeight',
@@ -65,7 +65,7 @@ var thumbnailHeightProperty = {
     }
   }
 }
-Settings.addToSchema(thumbnailHeightProperty);
+addToSettingsSchema.push(thumbnailHeightProperty);
 
 // add callback that adds "has-thumbnail" or "no-thumbnail" CSS classes
 postClassCallbacks.push(function (post, postClass){

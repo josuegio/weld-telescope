@@ -4,18 +4,13 @@ PostsSingledayController = RouteController.extend({
 
   template: getTemplate('singleDay'),
 
-  onBeforeAction: function () {
-    this.render(getTemplate('postListTop'), {to: 'postListTop'});
-    this.next();
-  },
-
   data: function() {
     var currentDate = this.params.day ? new Date(this.params.year, this.params.month-1, this.params.day) : Session.get('today');
     Session.set('currentDate', currentDate);
   },
 
   getTitle: function () {
-    return i18n.t('single_day');
+    return i18n.t('single_day') + ' - ' + getSetting('title', 'Telescope');
   },
 
   getDescription: function () {

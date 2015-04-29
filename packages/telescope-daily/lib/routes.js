@@ -6,12 +6,7 @@ var coreSubscriptions = new SubsManager({
 });
 
 PostsDailyController = RouteController.extend({
-
-  onBeforeAction: function () {
-    this.render(getTemplate('postListTop'), {to: 'postListTop'});
-    this.next();
-  },
-
+  
   template: function() {
     // use a function to make sure the template is evaluated *after* any template overrides
     return getTemplate('postsDaily');
@@ -31,7 +26,7 @@ PostsDailyController = RouteController.extend({
   },
 
   getTitle: function () {
-    return i18n.t('daily');
+    return i18n.t('daily') + ' - ' + getSetting('title', "Telescope");
   },
 
   getDescription: function () {
@@ -42,7 +37,7 @@ PostsDailyController = RouteController.extend({
 });
 
 Meteor.startup(function () {
-
+  
   Router.route('/daily/:days?', {
     name: 'postsDaily',
     controller: PostsDailyController

@@ -16,11 +16,9 @@ categorySchema = new SimpleSchema({
   },
   slug: {
     type: String,
-    optional: true
-  },
-  image: {
-    type: String,
-    optional: true
+    optional: true,
+    autoform: {
+    }
   }
 });
 
@@ -47,6 +45,16 @@ Meteor.startup(function () {
     insert: isAdminById,
     update: isAdminById,
     remove: isAdminById
+  });
+
+  Meteor.methods({
+    submitCategory: function(category){
+      console.log(category)
+      if (!Meteor.user() || !isAdmin(Meteor.user()))
+        throw new Meteor.Error(i18n.t('you_need_to_login_and_be_an_admin_to_add_a_new_category'));
+      var categoryId=Categories.insert(category);
+      return category.name;
+    }
   });
 });
 

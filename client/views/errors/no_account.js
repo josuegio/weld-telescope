@@ -1,6 +1,6 @@
 Template[getTemplate('no_account')].helpers({
   landingPageText: function(){
-    return Settings.get("landingPageText");
+    return getSetting("landingPageText");
   }
 });
 Template[getTemplate('no_account')].events({

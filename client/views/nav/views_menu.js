@@ -1,8 +1,8 @@
 Template[getTemplate('viewsMenu')].helpers({
-  viewsMenuData: function () {
-    return {
-      dropdownName: 'view',
-      dropdownItems: viewsMenu
-    }
+  menuItem: function () {
+    return getTemplate('menuItem');
+  },
+  views: function () {
+    return viewsMenu;
   }
 });

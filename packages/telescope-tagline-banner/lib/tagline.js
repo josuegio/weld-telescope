@@ -1,4 +1,4 @@
-postListTopModules.push({
+heroModules.push({
   template: 'taglineBanner',
   order: 1
 });
@@ -14,5 +14,5 @@ var showTaglineBanner = {
       instructions: 'Show tagline on homepage.'
     }
   }
-};
-Settings.addToSchema(showTaglineBanner);
+}
+addToSettingsSchema.push(showTaglineBanner);

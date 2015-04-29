@@ -18,13 +18,12 @@ body{
 .outer-wrapper{
   position:relative;
 }
-
 .content-wrapper{
-  padding:0 10px;
-  max-width: 1200px;
+  padding-bottom:20px;
 }
-
 .content-wrapper{
+  padding: 0 10px;
+  max-width: 1000px;
   margin: 0 auto;
   @include small{
     overflow-x: hidden;

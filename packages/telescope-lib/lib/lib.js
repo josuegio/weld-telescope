@@ -1,16 +1,26 @@
 getSiteUrl = function () {
-  return Settings.get('siteUrl', Meteor.absoluteUrl());
-};
+  return getSetting('siteUrl', Meteor.absoluteUrl());
+}
 
-removeSetting = function (setting) {
+getSetting = function(setting, defaultValue){
   var settings = Settings.find().fetch()[0];
-  console.log(settings._id)
-  console.log(setting)
-  if(isAdmin(Meteor.user())) {
-    var unsetObject = {};
-    unsetObject[setting] = true;
-    var update = Settings.update(settings._id, {$unset: unsetObject});
+
+  if (Meteor.isServer && Meteor.settings && !!Meteor.settings[setting]) { // if on the server, look in Meteor.settings
+    return Meteor.settings[setting];
+
+  } else if (Meteor.settings && Meteor.settings.public && !!Meteor.settings.public[setting]) { // look in Meteor.settings.public
+    return Meteor.settings.public[setting];
+
+  } else if(settings && (typeof settings[setting] !== 'undefined')) { // look in Settings collection
+    return settings[setting];
+
+  } else if (typeof defaultValue !== 'undefined') { // fallback to default
+    return  defaultValue;
+
+  } else { // or return undefined
+    return undefined;
   }
+
 };
 
 getThemeSetting = function(setting, defaultValue){
@@ -23,15 +33,15 @@ getThemeSetting = function(setting, defaultValue){
 
 camelToDash = function (str) {
   return str.replace(/\W+/g, '-').replace(/([a-z\d])([A-Z])/g, '$1-$2').toLowerCase();
-};
+}
 
 camelCaseify = function(str) {
   return dashToCamel(str.replace(' ', '-'));
-};
+}
 
 dashToCamel = function (str) {
   return str.replace(/(\-[a-z])/g, function($1){return $1.toUpperCase().replace('-','');});
-};
+}
 
 trimWords = function(s, numWords) {
   expString = s.split(/\s+/,numWords);
@@ -42,4 +52,4 @@ trimWords = function(s, numWords) {
 
 capitalise = function (string) {
   return string.charAt(0).toUpperCase() + string.slice(1);
-};
+}

@@ -22,7 +22,7 @@ var dismissBanner = function () {
 Meteor.startup(function () {
   Template[getTemplate('newsletterBanner')].helpers({
     siteName: function () {
-      return Settings.get('title');
+      return getSetting('title');
     },
     isNotConnected: function () {
       return !Meteor.user()
@@ -30,7 +30,7 @@ Meteor.startup(function () {
     showBanner: function () {
       // note: should not be reactive
       if(
-            Settings.get('showBanner', false) == false
+            getSetting('showBanner', false) == false
         ||  !can.view(Meteor.user())
         ||  Router.current().location.get().path != '/'
         ||  Cookie.get('showBanner') == "no"
@@ -54,7 +54,7 @@ Meteor.startup(function () {
           $banner.removeClass('show-loader');
           if(error){
             console.log(error);
-            Messages.flash(error.message, "error");
+            flashMessage(error.message, "error");
           }else{
             console.log(result);
             confirmSubscription();
@@ -71,9 +71,9 @@ Meteor.startup(function () {
           $banner.removeClass('show-loader');
           if(error){
             console.log(error);
-            Messages.flash(error.reason, "error");
+            flashMessage(error.reason, "error");
           }else{
-            Messages.clearSeen();
+            clearSeenMessages();
             console.log(result);
             confirmSubscription();
           }

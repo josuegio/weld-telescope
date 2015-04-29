@@ -16,10 +16,5 @@ primaryNav.push({
   order: 50
 });
 
-mobileNav.push({
-  template: 'categoriesMenu',
-  order: 10
-});
-
 // we want to wait until categories are all loaded to load the rest of the app
 preloadSubscriptions.push('categories');

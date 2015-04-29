@@ -59,7 +59,7 @@ Meteor.methods({
         }});
       }
 
-      var communityName = Settings.get('title','Telescope'),
+      var communityName = getSetting('title','Telescope'),
           emailSubject = 'You are invited to try '+communityName,
           emailProperties = {
             newUser : typeof user === 'undefined',

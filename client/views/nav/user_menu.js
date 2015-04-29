@@ -1,17 +1,14 @@
 Template[getTemplate('userMenu')].helpers({
-  menuLabel: function () {
+  isLoggedIn: function () {
+    return !!Meteor.user();
+  },
+  name: function () {
     return getDisplayName(Meteor.user());
   },
-  menuItems: function () {
-    return userMenu;
+  profileUrl: function () {
+    return Router.path('user_profile', {_idOrSlug: Meteor.user().slug});
   },
-  menuMode: function () {
-    if (!!this.mobile) {
-      return 'list';
-    } else if (Settings.get('navLayout', 'top-nav') === 'top-nav') {
-      return 'dropdown';
-    } else {
-      return 'accordion';
-    }
+  userEditUrl: function () {
+    return Router.path('user_edit', {slug: Meteor.user().slug});
   }
 });

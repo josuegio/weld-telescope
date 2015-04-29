@@ -6,19 +6,13 @@ Meteor.startup(function () {
     
     view: 'category',
 
-    showViewsNav: false,
-
-    onBeforeAction: function () {
-      this.render(getTemplate('categoryTitle'), {to: 'postListTop'});
-      this.next();
-    },
-
     getCurrentCategory: function () {
       return Categories.findOne({slug: this.params.slug});
     },
 
     getTitle: function () {
-      return this.getCurrentCategory().name;
+      var category = this.getCurrentCategory();
+      return category.name + ' - ' + getSetting('title', 'Telescope');
     },
 
     getDescription: function () {
@@ -41,7 +35,6 @@ Meteor.startup(function () {
   // Categories Admin
 
   Router.route('/categories', {
-    controller: AdminController,
     name: 'categories'
   });
 

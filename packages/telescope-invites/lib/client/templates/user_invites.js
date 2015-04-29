@@ -40,21 +40,21 @@ var scrollUp = function(){
 AutoForm.hooks({
   inviteForm: {
     onSuccess: function(operation, result, template) {
-      Messages.clearSeen();
+      clearSeenMessages();
 
       if(result && result.newUser){
-        Messages.flash('An invite has been sent out. Thank you!', "success");
+        flashMessage('An invite has been sent out. Thank you!', "success");
       } else {
-        Messages.flash('Thank you!', "info");
+        flashMessage('Thank you!', "info");
       }
       scrollUp();
     },
 
     onError: function(operation, error, template) {
-      Messages.clearSeen();
+      clearSeenMessages();
 
       if(error && error.reason){
-        Messages.flash(error.reason, "error");
+        flashMessage(error.reason, "error");
         scrollUp();
       }
     }

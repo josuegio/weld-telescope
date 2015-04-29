@@ -5,16 +5,15 @@ Package.describe({
 });
 
 Npm.depends({
-  'feedparser': '1.0.0',
+  'htmlparser2': '3.8.2',
   'to-markdown': '0.0.2',
-  'he': '0.5.0',
-  'iconv-lite': '0.4.7'
+  'he': '0.5.0'
 });
 
 Package.onUse(function(api) {
 
   api.use([
-    'telescope-base',
+    'telescope-base', 
     'telescope-tags',
     'aldeed:simple-schema',
     'aldeed:autoform',
@@ -24,22 +23,20 @@ Package.onUse(function(api) {
 
   api.use([
     'iron:router',
-    'templating',
-    'telescope-messages'
+    'templating'
   ], 'client');
 
   api.use([
     'http',
-    'aldeed:http@0.2.2',
-    'momentjs:moment',
+    'mrt:moment',
     'percolatestudio:synced-cron'
   ], 'server');
 
-  api.addFiles([
+  api.add_files([
     'lib/feeds.js'
   ], ['client', 'server']);
 
-  api.addFiles([
+  api.add_files([
     'lib/client/routes.js',
     'lib/client/scss/feeds.scss',
     'lib/client/templates/feeds.js',
@@ -48,13 +45,13 @@ Package.onUse(function(api) {
     'lib/client/templates/feed_item.html',
   ], 'client');
 
-  api.addFiles([
+  api.add_files([
     'lib/server/fetch_feeds.js',
     'lib/server/cron.js',
     'lib/server/publications.js'
   ], ['server']);
 
-  api.addFiles([
+  api.add_files([
     "i18n/en.i18n.json"
   ], ["client", "server"]);
 

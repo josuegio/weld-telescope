@@ -1,4 +1,4 @@
-$small-break: 600px;
+$small-break: 30em;
 @mixin small(){
   @media screen and (max-width: $small-break) {
     @content;
@@ -9,7 +9,7 @@ $small-break: 600px;
   flex-grow: 0;
   flex-shrink: 0;
   margin-right: 10px;
-  @include small {
+  @include small{
     margin: 0 0 0 10px;
     float: right;
   }
@@ -21,7 +21,7 @@ $small-break: 600px;
   overflow: hidden;
   width: 80px;
   @include small{
-    width: 60px;
+    width: 50px;
   }
 }
 

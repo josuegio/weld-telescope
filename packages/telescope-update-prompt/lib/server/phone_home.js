@@ -1,11 +1,11 @@
 Meteor.methods({
   phoneHome: function  () {
-
+    
     var url = 'http://version.telescopeapp.org/';
 
     var params = {
       currentVersion: telescopeVersion,
-      siteTitle: Settings.get('title'),
+      siteTitle: getSetting('title'),
       siteUrl: getSiteUrl(),
       users: Meteor.users.find().count(),
       posts: Posts.find().count(),

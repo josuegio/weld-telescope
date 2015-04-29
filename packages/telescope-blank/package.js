@@ -19,7 +19,6 @@ Package.onUse(function (api) {
     'iron:router',                // routing package
     'telescope-base',             // basic Telescope hooks and objects
     'telescope-lib',              // useful functions
-    'telescope-settings',
     'telescope-i18n',             // internationalization wrapper
     'fourseven:scss'              // SCSS compilation package
   ]);
@@ -70,7 +69,7 @@ Package.onUse(function (api) {
 
   api.add_files([
     'lib/server/publications.js'
-  ], ['server']);
+  ], ['server']);    
 
   // i18n languages (must come last)
 

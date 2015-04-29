@@ -13,6 +13,11 @@ UI.registerHelper('eachWithRank', function(items, options) {
   });
   return out;
 });
+
+UI.registerHelper('getSetting', function(setting, defaultArgument){
+  setting = getSetting(setting, defaultArgument);
+  return setting;
+});
 UI.registerHelper('isLoggedIn', function() {
   return !!Meteor.user();
 });
@@ -30,7 +35,7 @@ UI.registerHelper('isAdmin', function(showError) {
     return true;
   }
   if ((typeof showError === 'string') && (showError === 'true')) {
-    Messages.flash(i18n.t('sorry_you_do_not_have_access_to_this_page'), 'error');
+    flashMessage(i18n.t('sorry_you_do_not_have_access_to_this_page'), 'error');
   }
   return false;
 });
@@ -82,8 +87,4 @@ UI.registerHelper('displayName', function(userOrUserId) {
   if (!!user) {
     return getDisplayName(user);
   }
-});
-
-UI.registerHelper('icon', function(iconName, iconClass) {
-  return getIcon(iconName, iconClass);
 });

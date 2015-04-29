@@ -1,20 +1,4 @@
 Template[getTemplate('nav')].helpers({
-  headerClass: function () {
-    var headerClass = "";
-    var bgBrightness = tinycolor(Settings.get('headerColor')).getBrightness();
-    if (bgBrightness < 50) {
-      headerClass += " dark-bg";
-    } else if (bgBrightness < 130) {
-      headerClass += " medium-dark-bg";
-    } else if (bgBrightness < 220) {
-      headerClass += " medium-light-bg";
-    } else if (bgBrightness < 255) {
-      headerClass += " light-bg";
-    } else {
-      headerClass += " white-bg";
-    }
-    return headerClass;
-  },
   primaryNav: function () {
     return _.sortBy(primaryNav, 'order');
   },
@@ -28,30 +12,20 @@ Template[getTemplate('nav')].helpers({
     return !!secondaryNav.length;
   },
   dropdownClass: function () {
-    var dropdownClass = "";
-    // only use dropdowns for top nav
-    if (this.length > 3) {
-      dropdownClass += "long-dropdown";
-    }
-    if (Settings.get('navLayout', 'top-nav') == 'top-nav' && getThemeSetting('useDropdowns', true)) {
-      dropdownClass += "has-dropdown";
-    } else {
-      dropdownClass += "no-dropdown";
-    }
-    return dropdownClass;
-  },
-  hasMoreThanThreeItems: function () {
-    console.log(this)
-    return this.length > 3;
-  },
-  logoTemplate: function () {
-    return getTemplate('logo');
-  },
-  navZoneTemplate: function () {
-    return getTemplate('navZone');
+    return getThemeSetting('useDropdowns', true) ? 'has-dropdown' : 'no-dropdown';
   },
   getTemplate: function () {
     return getTemplate(this.template);
+  },
+  site_title: function(){
+    return getSetting('title', "Telescope");
+  },
+  logo_url: function(){
+    return getSetting('logoUrl');
+  },
+  headerClass: function () {
+    var color = getSetting('headerColor');
+    return (color == 'white' || color == '#fff' || color == '#ffffff') ? "white-background" : '';
   }
 });
 

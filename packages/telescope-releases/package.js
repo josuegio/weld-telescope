@@ -74,8 +74,6 @@ Package.onUse(function (api) {
   api.addFiles('releases/0.14.1.md', 'server', { isAsset: true });
   api.addFiles('releases/0.14.2.md', 'server', { isAsset: true });
   api.addFiles('releases/0.14.3.md', 'server', { isAsset: true });
-  api.addFiles('releases/0.15.0.md', 'server', { isAsset: true });
-  api.addFiles('releases/0.15.1.md', 'server', { isAsset: true });
 
   // i18n languages (must come last)
 

@@ -8,7 +8,6 @@
 
 @import "global/forms";
 @import "global/links";
-@import "global/icons";
 @import "global/main";
 @import "global/markdown";
 @import "global/tables";
@@ -16,10 +15,10 @@
 
 // Specific Styles (header, posts, etc.)
 
-@import "specific/admin";
 @import "specific/avatars";
+@import "specific/dropdown";
 @import "specific/errors";
-@import "specific/nav";
+@import "specific/header";
 @import "specific/layout";
 @import "specific/loading";
 @import "specific/mobile_nav";

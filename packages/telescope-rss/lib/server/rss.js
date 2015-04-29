@@ -1,10 +1,10 @@
 var RSS = Npm.require('rss');
 
 var getMeta = function(url) {
-  var siteUrl = Settings.get('siteUrl', Meteor.absoluteUrl());
+  var siteUrl = getSetting('siteUrl', Meteor.absoluteUrl());
   return {
-    title: Settings.get('title'),
-    description: Settings.get('tagline'),
+    title: getSetting('title'),
+    description: getSetting('tagline'),
     feed_url: siteUrl+url,
     site_url: siteUrl,
     image_url: siteUrl+'img/favicon.png',

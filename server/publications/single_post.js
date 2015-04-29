@@ -7,32 +7,20 @@ Meteor.publish('singlePost', function(id) {
   return [];
 });
 
-// Publish author of the current post, authors of its comments, and upvoters of the post
+// Publish authors of the current post and its comments
 
 Meteor.publish('postUsers', function(postId) {
   if (can.viewById(this.userId)){
     // publish post author and post commenters
     var post = Posts.findOne(postId),
-        users = [post.userId]; // publish post author's ID
+        users = [];
 
     if (post) {
-
-      // get IDs from all commenters on the post
       var comments = Comments.find({postId: post._id}).fetch();
-      if (comments.length) {
-        users = users.concat(_.pluck(comments, "userId"));
-      }
-
-      // publish upvoters
-      if (post.upvoters && post.upvoters.length) {
-        users = users.concat(post.upvoters);
-      }
-
-      // publish downvoters
-      if (post.downvoters && post.downvoters.length) {
-        users = users.concat(post.downvoters);
-      }
-
+      // get IDs from all commenters on the post, plus post author's ID
+      users = _.pluck(comments, "userId");
+      users.push(post.userId);
+      users = _.unique(users);
     }
 
     users = users.concat(post.upvoters); // #WELD - changed to publish upvoters instead of commenters
@@ -45,7 +33,7 @@ Meteor.publish('postUsers', function(postId) {
 
 Meteor.publish('postComments', function(postId) {
   if (can.viewById(this.userId)){
-    return Comments.find({postId: postId}, {sort: {score: -1, postedAt: -1}});
+    return Comments.find({postId: postId});
   }
   return [];
 });

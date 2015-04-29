@@ -55,7 +55,7 @@ var enableNewsletter = {
     }
   }
 }
-Settings.addToSchema(enableNewsletter);
+addToSettingsSchema.push(enableNewsletter);
 
 var showBanner = {
   propertyName: 'showBanner',
@@ -69,7 +69,7 @@ var showBanner = {
     }
   }
 }
-Settings.addToSchema(showBanner);
+addToSettingsSchema.push(showBanner);
 
 var mailChimpAPIKey = {
   propertyName: 'mailChimpAPIKey',
@@ -82,7 +82,7 @@ var mailChimpAPIKey = {
     }
   }
 }
-Settings.addToSchema(mailChimpAPIKey);
+addToSettingsSchema.push(mailChimpAPIKey);
 
 var mailChimpListId = {
   propertyName: 'mailChimpListId',
@@ -96,7 +96,7 @@ var mailChimpListId = {
     }
   }
 }
-Settings.addToSchema(mailChimpListId);
+addToSettingsSchema.push(mailChimpListId);
 
 var postsPerNewsletter = {
   propertyName: 'postsPerNewsletter',
@@ -108,7 +108,7 @@ var postsPerNewsletter = {
     }
   }
 }
-Settings.addToSchema(postsPerNewsletter);
+addToSettingsSchema.push(postsPerNewsletter);
 
 var newsletterFrequency = {
   propertyName: 'newsletterFrequency',
@@ -144,7 +144,7 @@ var newsletterFrequency = {
     }
   }
 }
-Settings.addToSchema(newsletterFrequency);
+addToSettingsSchema.push(newsletterFrequency);
 
 var newsletterTime = {
   propertyName: 'newsletterTime',
@@ -159,7 +159,7 @@ var newsletterTime = {
     }
   }
 }
-Settings.addToSchema(newsletterTime);
+addToSettingsSchema.push(newsletterTime);
 
 var autoSubscribe = {
   propertyName: 'autoSubscribe',
@@ -172,7 +172,7 @@ var autoSubscribe = {
     }
   }
 }
-Settings.addToSchema(autoSubscribe);
+addToSettingsSchema.push(autoSubscribe);
 
 // create new "campaign" lens for all posts from the past X days that haven't been scheduled yet
 viewParameters.campaign = function (terms) {
@@ -193,7 +193,7 @@ heroModules.push({
 });
 
  function subscribeUserOnCreation (user) {
-  if (!!Settings.get('autoSubscribe') && !!getEmail(user)) {
+  if (!!getSetting('autoSubscribe') && !!getEmail(user)) {
     addToMailChimpList(user, false, function (error, result) {
       console.log(error)
       console.log(result)

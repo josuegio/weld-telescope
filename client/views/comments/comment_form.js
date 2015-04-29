@@ -9,7 +9,7 @@ Template[getTemplate('comment_form')].events({
 
     e.preventDefault();
     $(e.target).addClass('disabled');
-    Messages.clearSeen();
+    clearSeenMessages();
 
     var comment = {};
     var $commentForm = instance.$('#comment');
@@ -19,6 +19,8 @@ Template[getTemplate('comment_form')].events({
     // now that the form is latency compensated, we don't actually need to show this
     // $commentForm.prop('disabled', true);
     // $submitButton.addClass('loading');
+
+    $commentForm.val('');
 
     // context can be either post, or comment property
     var postId = !!this._id ? this._id: this.comment.postId;
@@ -39,10 +41,9 @@ Template[getTemplate('comment_form')].events({
       // $submitButton.removeClass('loading');
       if(error){
         console.log(error);
-        Messages.flash(error.reason, "error");
+        flashMessage(error.reason, "error");
       }else{
         trackEvent("newComment", newComment);
-        $commentForm.val('');
       }
     });
 
