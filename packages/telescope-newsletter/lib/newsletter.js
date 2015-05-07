@@ -132,7 +132,7 @@ var newsletterFrequency = {
           label: 'Mondays & Thursdays'
         },
         {
-          // WELD: Added Saturdays to newsletter schedule, also see cron.js
+          // #WELD: Added Saturdays to newsletter schedule, also see cron.js
           value: 4,
           label: 'Saturdays'
         },
