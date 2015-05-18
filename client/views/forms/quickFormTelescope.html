@@ -44,7 +44,9 @@
       <div class="{{rightColumnClass}}">
         {{> afFieldInput afFieldInputAtts}}
         {{#if afFieldInstructions}}
-          <span class="instructions-block">{{afFieldInstructions}}</span>
+          <span class="instructions-block">{{afFieldInstructions}}
+            <a class="help-link pull-right" href="http://thisismarkdown.com/" target="_blank">Learn More Tricks</a>
+          </span>
         {{/if}}
         <span class="help-block">{{{afFieldMessage name=this.atts.name}}}</span>
       </div>
